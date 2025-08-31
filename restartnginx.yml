@@ -1,0 +1,11 @@
+- hosts: all
+  serial: 1
+  tasks:
+  - name: Restart PHP
+    service:
+        name: php8.3-fpm
+        state: restarted
+  - name: Restart Nginx
+    service:
+        name: nginx
+        state: restarted

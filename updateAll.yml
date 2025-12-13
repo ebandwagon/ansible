@@ -9,6 +9,7 @@
     until: process_check.rc != 0  # Loop until the command returns a non-zero return code (process not found)
     retries: 600                # Number of times to retry
     delay: 5                    # Seconds to wait between retries
+    
   - name : Update all packages
     apt: name="*" state=latest update_cache=true force_apt_get=true
 

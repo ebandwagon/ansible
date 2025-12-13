@@ -2,6 +2,13 @@
   serial: 1
   become: true
   tasks:
+  - name: Check if Unison process is running
+    ansible.builtin.command: "pgrep unison"
+    register: process_check
+    ignore_errors: true  # Prevents the playbook from stopping if pgrep fails (meaning process is gone)
+    until: process_check.rc != 0  # Loop until the command returns a non-zero return code (process not found)
+    retries: 600                # Number of times to retry
+    delay: 5                    # Seconds to wait between retries
   - name : Update all packages
     apt: name="*" state=latest update_cache=true force_apt_get=true
 

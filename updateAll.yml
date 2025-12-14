@@ -1,7 +1,7 @@
 - hosts: Storeage_Pool
   tasks:
   - name : Pause server sync
-    shell: "flock /tmp/unison --command 'touch /tmp/update'
+    shell: "flock /tmp/unison --command 'touch /tmp/update'"
   
 - hosts: all
   serial: 1

@@ -1,8 +1,3 @@
-- hosts: Storeage_Pool
-  tasks:
-  - name : Pause server sync
-    shell: "flock --verbose /tmp/unison touch /tmp/update"
-  
 - hosts: all
   serial: 1
   become: true
@@ -21,8 +16,4 @@
   - name : Reboot if required
     reboot:
     when: reboot_required_file.stat.exists == true
-
-- hosts: Storeage_Pool
-  tasks:
-  - name : Pause server sync
-    shell: "rm /tmp/update"
+    

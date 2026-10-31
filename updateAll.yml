@@ -6,7 +6,7 @@
     ansible.builtin.command: whoami
     register: me
   - ansible.builtin.debug:
-    var: me.stdout
+      var: me.stdout
   - name : Update all packages
     apt: name="*" state=latest update_cache=true force_apt_get=true
 

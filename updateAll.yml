@@ -1,3 +1,8 @@
+- name: Who am I after become?
+  ansible.builtin.command: whoami
+  register: me
+- ansible.builtin.debug:
+    var: me.stdout
 - hosts: all
   serial: 1
   become: true

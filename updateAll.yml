@@ -2,11 +2,6 @@
   serial: 1
   become: true
   tasks:
-  - name: Who am I after become?
-    ansible.builtin.command: whoami
-    register: me
-  - ansible.builtin.debug:
-      var: me.stdout
   - name : Update all packages
     apt: name="*" state=latest update_cache=true force_apt_get=true
 
